@@ -1,6 +1,6 @@
 
 const int pwm_sig = 5;
-const int temp_sense = A0;
+const int temp_sense = A1;
 
 const int N_SAMPLES = 100;
 
