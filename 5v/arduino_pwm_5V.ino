@@ -20,17 +20,7 @@ void loop() {
 
     Serial.println("loop");
 
-//    for (int duty = 255; duty > 20; duty -= 50){
-//        analogWrite(pwm_sig, duty);
-//        delay(2000);
-//        print_temp();
-//    }
-//
-//    for (int duty = 20; duty < 255; duty += 50){
-//        analogWrite(pwm_sig, duty);
-//        delay(2000);
-//        print_temp();
-//    }
+
 
     int sum = 0;
 
