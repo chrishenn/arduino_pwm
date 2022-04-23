@@ -31,6 +31,7 @@ void loop(void) {
 
     analogWrite(pwm_pin, duty_int);
 
+    // accumulate some number of samples from each thermistor
     float temp_sum_0 = 0;
     float temp_sum_1 = 0;
     for (int i = 0; i < N_SAMPLES; i++){
@@ -40,17 +41,18 @@ void loop(void) {
         delay(N_MILLI / N_SAMPLES / 2);
     }
 
+    // average them
     float av_temp_0 = temp_sum_0 / float( N_SAMPLES );
     float av_temp_1 = temp_sum_1 / float( N_SAMPLES );
 
+    // reported temps from each thermistor, according to its voltage
     float temp_0 = ( ( (av_temp_0 * AREF_VOLTAGE) / 1024.0) - 0.5) * 100.0;
     float temp_1 = ( ( (av_temp_1 * AREF_VOLTAGE) / 1024.0) - 0.5) * 100.0;
 
-
-    temp_0 = (temp_0 * 1.9665) - 9.0562;        // from regression curve to real temp on ascent
+    temp_0 = (temp_0 * 1.9665) - 9.0562;        // from regression curve to estimate real temp
     int duty_perc_0 = int( temp_0 * (5.0/4.0) + 12.5 ); // from real temp to duty percent
 
-    temp_1 = (temp_1 * 1.29795) + 36.556;       // from regression curve to real temp on ascent
+    temp_1 = (temp_1 * 1.29795) + 36.556;       // from regression curve to estimate real temp
     int duty_perc_1 = int( temp_1 * (5.0/4.0) );    // from real temp to duty percent
 
     Serial.print("Current temp_0: ");
@@ -63,10 +65,12 @@ void loop(void) {
     Serial.print("duty_1: ");
     Serial.println(duty_perc_1);
 
+    // take the biggest recommended duty percent from any thermistor
     int duty_perc = max(duty_perc_0, duty_perc_1);
     duty_perc = max(duty_perc, DUTY_PERC_MIN);
     duty_perc = min(duty_perc, DUTY_PERC_MAX);
 
+    // convert from duty percent to integer out of 255
     duty_int = (float(duty_perc) / 100.0) * DUTY_MAX;
 
     Serial.print("duty_perc (out of 100): ");
