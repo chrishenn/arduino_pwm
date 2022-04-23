@@ -14,5 +14,12 @@ I fit a simple curve by running a stress test using aida64 in windows, and takin
 
 Is this the most accurate or precise way of reading temps from components? No. However, the fans go faster when the components heat up, and that's really all I wanted. As an added benefit, the fan speed will increase based on gpu temp, irrespective of drivers reporting that temp to the OS. There are software utilities that will do that here and there, but I much prefer shoving a little device into the chassis, and forgetting about it forever.
 
+###
+### The components layout:
+![The general layout of the components in the case](doc/images/IMG_20200815_112622.jpg)
+
+###
+### The fans that need controlling:
+![The fans that need controlling](doc/images/IMG_20200903_133630.jpg)
 
 
