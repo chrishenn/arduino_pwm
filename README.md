@@ -1,6 +1,10 @@
-# Arduino PWM Fan Control
-### arduino_pwm
-###
+<h1 align="center" style="margin-top: 0px;">Arduino PWM Fan Control</h1>
+
+<div id="img0" align="center">
+    <img src="doc/images/IMG_20200815_112622.jpg" height="500">
+</div>
+
+---
 
 I have an old dell optiplex 9020 into which I shoved a 2-slot, full-size, EVGA gtx 970. The layout's a bit cramped, and I wanted to upgrade the fans, while controlling them to spin faster when the computer gets hotter. Seems simple enough.
 
@@ -16,12 +20,16 @@ I fit a simple curve by running a stress test using aida64 in windows, and takin
 
 Is this the most accurate or precise way of reading temps from components? No. However, the fans go faster when the components heat up, and that's really all I could have hoped for. As an added benefit, the fan speed will increase based on gpu temp, irrespective of drivers reporting that temp to the OS (a feature that would usually require extra software). I did verify that the machine will get much too hot, and thermally throttle, if I keep the noctua's at their minimum speed while stressing either the cpu or gpu. Conversely, they stay nice and cool with the arduino doing its thing. Success!
 
-###
-### The components layout:
-![The general layout of the components in the case](doc/images/IMG_20200815_112622.jpg)
 
-###
-### Layout with the added noctua fans:
-![Component layout with the added fans](doc/images/IMG_20201126_130611.jpg)
+---
+
+
+
+<h3 align="center" style="margin-top: 0px;">Compact PC, Now With *Smart* Brown-and-Tan Fans</h3>
+
+<div id="img0" align="center">
+    <img src="doc/images/IMG_20201126_130611.jpg" height="600">
+</div>
+
 
 
